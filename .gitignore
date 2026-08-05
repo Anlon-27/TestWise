@@ -1,0 +1,14 @@
+
+*.pyc
+/common/__pycache__
+/.idea
+*.pyc
+/report/temp
+/logs
+/report/coverage
+/report/logs
+/report/mock_server
+/report/extract.yaml
+/report/extract_*.yaml
+.coverage
+.env

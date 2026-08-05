@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI-Pytest 智能接口测试框架 | 测试结果分析报告</title>
+<style>
+:root {
+  --pass: #16a34a; --fail: #dc2626; --error: #d97706; --skip: #64748b;
+  --ink: #1e293b; --muted: #64748b; --bg: #f1f5f9; --card: #ffffff;
+  --line: #e2e8f0; --accent: #4f46e5; --accent2: #7c3aed;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--ink);
+  font-family: "Segoe UI", "PingFang SC", "Microsoft YaHei", system-ui, sans-serif;
+  line-height: 1.75; }
+.hero { background: linear-gradient(135deg, var(--accent), var(--accent2)); color: #fff;
+  padding: 40px 24px 56px; }
+.hero .inner { max-width: 960px; margin: 0 auto; }
+.hero h1 { margin: 0 0 8px; font-size: 26px; letter-spacing: .5px; }
+.hero .meta { opacity: .92; font-size: 13px; }
+.wrap { max-width: 960px; margin: -34px auto 48px; padding: 0 16px; }
+.stats { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; margin-bottom: 24px; }
+.stat { background: var(--card); border-radius: 14px; padding: 18px 10px; text-align: center;
+  box-shadow: 0 8px 24px rgba(15, 23, 42, .08); border: 1px solid var(--line); }
+.stat .num { font-size: 30px; font-weight: 700; }
+.stat .label { font-size: 13px; color: var(--muted); margin-top: 2px; }
+.stat.total .num { color: var(--accent); }
+.stat.pass .num { color: var(--pass); }
+.stat.fail .num { color: var(--fail); }
+.stat.error .num { color: var(--error); }
+.stat.skip .num { color: var(--skip); }
+.card { background: var(--card); border: 1px solid var(--line); border-radius: 16px;
+  padding: 28px 32px; box-shadow: 0 8px 24px rgba(15, 23, 42, .06); }
+.card h1 { font-size: 24px; margin: 28px 0 10px; padding-bottom: 8px;
+  border-bottom: 2px solid var(--line); }
+.card h1:first-child { margin-top: 0; }
+.card h2 { font-size: 20px; margin: 26px 0 8px; color: var(--accent); }
+.card h3 { font-size: 16px; margin: 20px 0 6px; }
+.card p { margin: 8px 0; }
+.card ul, .card ol { margin: 8px 0 8px 4px; padding-left: 22px; }
+.card li { margin: 4px 0; }
+.card code { background: #eef2ff; color: #4338ca; border-radius: 5px;
+  padding: 2px 6px; font-size: 13px; }
+.card pre { background: #0f172a; color: #e2e8f0; border-radius: 10px; padding: 14px 16px;
+  overflow-x: auto; }
+.card pre code { background: none; color: inherit; padding: 0; }
+.card blockquote { margin: 12px 0; padding: 10px 16px; border-left: 4px solid var(--accent);
+  background: #eef2ff; border-radius: 0 8px 8px 0; }
+.table-wrap { overflow-x: auto; margin: 12px 0; border: 1px solid var(--line); border-radius: 10px; }
+.card table { width: 100%; border-collapse: collapse; font-size: 14px; }
+.card th { background: #f8fafc; color: var(--muted); text-align: left; padding: 10px 14px;
+  border-bottom: 1px solid var(--line); white-space: nowrap; }
+.card td { padding: 10px 14px; border-bottom: 1px solid var(--line); }
+.card tr:last-child td { border-bottom: none; }
+.card tbody tr:nth-child(even) { background: #f8fafc; }
+.foot { margin-top: 20px; color: var(--muted); font-size: 12.5px; line-height: 2; }
+.foot span { background: #e2e8f0; color: #475569; border-radius: 999px; padding: 3px 10px; margin-right: 6px; }
+@media (max-width: 640px) {
+  .stats { grid-template-columns: repeat(2, 1fr); }
+  .card { padding: 20px 16px; }
+}
+</style>
+</head>
+<body>
+<header class="hero">
+  <div class="inner">
+    <h1>AI-Pytest 智能接口测试框架</h1>
+    <div class="meta">AI 测试结果分析报告 · 生成时间：2026-08-05 12:09:08 · 模型：deepseek-chat</div>
+  </div>
+</header>
+<div class="wrap">
+  <section class="stats"><div class="stat total"><div class="num">19</div><div class="label">用例总数</div></div><div class="stat pass"><div class="num">19</div><div class="label">通过</div></div><div class="stat fail"><div class="num">0</div><div class="label">失败</div></div><div class="stat error"><div class="num">0</div><div class="label">错误</div></div><div class="stat skip"><div class="num">0</div><div class="label">跳过</div></div></section>
+  <article class="card"><p>日志目录不存在，但测试全部通过，无需进一步排查。所有数据已足够，我来生成最终分析报告。</p>
+
+<p>由于本次测试<strong>全部通过，无失败用例</strong>，根据任务要求&quot;如果有失败用例，调用 send_feishu 推送简要结论&quot;，本次无需推送飞书。</p>
+
+<hr>
+
+<h1>测试运行结果分析报告</h1>
+
+<h2>一、总体结论 ✅</h2>
+
+<div class="table-wrap"><table><thead><tr><th>指标</th><th>数值</th></tr></thead><tbody><tr><td>用例总数</td><td>19</td></tr><tr><td>通过</td><td>19</td></tr><tr><td>失败</td><td>0</td></tr><tr><td>错误</td><td>0</td></tr><tr><td>跳过</td><td>0</td></tr><tr><td><strong>通过率</strong></td><td><strong>100%</strong></td></tr><tr><td>总耗时</td><td>0.965s（JUnit）/ 0.773s（Allure 汇总）</td></tr><tr><td>运行时间</td><td>2026-08-05 12:08:51</td></tr><tr><td>运行主机</td><td>DESKTOP-I3SP0PA</td></tr></tbody></table></div>
+
+<p><strong>结论：本次测试全部通过，无任何失败、错误或跳过用例，测试质量良好。</strong></p>
+
+<hr>
+
+<h2>二、性能表现</h2>
+
+<div class="table-wrap"><table><thead><tr><th>指标</th><th>数值</th></tr></thead><tbody><tr><td>平均耗时</td><td>41ms</td></tr><tr><td>P50</td><td>41ms</td></tr><tr><td>P90</td><td>54ms</td></tr><tr><td>P95</td><td>61ms</td></tr><tr><td>P99</td><td>67ms</td></tr><tr><td>最慢用例</td><td>69ms</td></tr></tbody></table></div>
+
+<p>所有用例耗时均在 100ms 以内，接口响应速度稳定，无明显性能瓶颈。</p>
+
+<hr>
+
+<h2>三、用例覆盖情况</h2>
+
+<p>本次运行覆盖了以下业务模块（全部通过）：</p>
+
+<ul><li><strong>用户模块</strong>：正常新增、无效新增（缺 token / 缺 username / 缺 role_id）、有效/无效删除、正常修改、有效查询</li><li><strong>商品模块</strong>：商品列表、商品详情、获取商品列表、获取商品详情</li><li><strong>订单模块</strong>：提交订单、订单支付、校验订单状态</li></ul>
+
+<p>覆盖了正常流程与异常流程（缺少必填参数、缺少 token、空 userid 等边界场景），用例设计较为完整。</p>
+
+<hr>
+
+<h2>四、失败用例明细</h2>
+
+<p><strong>无失败用例。</strong></p>
+
+<hr>
+
+<h2>五、修复建议</h2>
+
+<p>本次无失败用例，无需修复。</p>
+
+<hr>
+
+<h2>六、需人工关注提示</h2>
+
+<ol><li><strong>环境信息缺失</strong>：Allure 报告的 <code>environment.json</code> 和 <code>executors.json</code> 均为空，建议补充环境信息（如被测环境地址、版本号、执行人），便于后续追溯。</li><li><strong>日志目录缺失</strong>：<code>logs/</code> 目录不存在，若后续需要排查问题，建议开启日志记录以便定位。</li><li><strong>用例数量偏少</strong>：当前仅 19 条用例，建议后续补充更多业务场景（如权限校验、并发、数据边界等）以提升覆盖率。</li></ol>
+
+<hr>
+
+<p><strong>总结：本次测试 19/19 全部通过，无需推送飞书告警。</strong> 建议补充环境信息与日志记录，持续完善用例覆盖。</p></article>
+  <div class="foot">
+    <div><span>数据来源</span>report/results.xml、report/temp/（Allure 原始结果）、report/logs/（运行日志）</div>
+    <div><span>Agent 调用工具</span>get_test_summary、get_allure_metrics、get_perf_stats、read_log_file</div>
+    <div>报告文件：report/ai_report.html</div>
+  </div>
+</div>
+</body>
+</html>

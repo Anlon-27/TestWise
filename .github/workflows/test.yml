@@ -1,0 +1,60 @@
+name: API Tests
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 2 * * *"
+
+jobs:
+  test:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - uses: astral-sh/setup-uv@v5
+
+      - name: Install dependencies
+        run: |
+          uv sync
+          cd mock_server/api_server && uv sync
+
+      - name: Start mock server
+        shell: powershell
+        run: |
+          New-Item -ItemType Directory -Force -Path "report/mock_server" | Out-Null
+          Start-Process -FilePath "mock_server/api_server/.venv/Scripts/python.exe" -ArgumentList "base/flask_service.py" -WorkingDirectory "mock_server/api_server" -WindowStyle Hidden -RedirectStandardOutput "report/mock_server/server.out.log" -RedirectStandardError "report/mock_server/server.err.log"
+          Start-Sleep -Seconds 8
+
+      - name: Run API tests
+        shell: pwsh
+        run: |
+          $env:PYTHONIOENCODING = "utf-8"
+          uv run python -m pytest -q --alluredir=./report/temp ./testcase --clean-alluredir --reruns 2 --reruns-delay 1 --only-rerun "ConnectionError|TimeoutError" --cov=base --cov=common --cov-report=term --cov-report=html:report/coverage --junitxml=./report/results.xml
+
+      - name: AI analysis
+        if: ${{ secrets.AI_API_KEY != '' }}
+        shell: pwsh
+        env:
+          AI_API_KEY: ${{ secrets.AI_API_KEY }}
+        run: |
+          $env:PYTHONIOENCODING = "utf-8"
+          uv run python -m common.ai_agent
+
+      - name: Upload test report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: api-test-report
+          path: |
+            report/results.xml
+            report/allureReport
+            report/coverage
+            report/ai_report.html
+          if-no-files-found: ignore
