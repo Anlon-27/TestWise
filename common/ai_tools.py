@@ -93,10 +93,10 @@ def get_test_summary():
 
 
 def get_allure_metrics():
-    """读取 Allure 汇总数据（统计、耗时、环境信息）和原始用例状态分布。"""
+    """读取 Allure 的套件/功能分组与环境信息；统计数字以 JUnit 为准，避免重复。"""
     result = {}
     widgets = os.path.join(ALLURE_HTML_DIR, "widgets")
-    for filename in ("summary.json", "status-chart.json", "duration.json", "environment.json", "executors.json"):
+    for filename in ("suites.json", "behaviors.json", "environment.json"):
         path = os.path.join(widgets, filename)
         if os.path.exists(path):
             try:
@@ -105,17 +105,6 @@ def get_allure_metrics():
                 result[filename] = json.loads(content) if content.strip() else {}
             except Exception as e:
                 result[filename] = "解析失败: {}".format(e)
-    status_count = {}
-    if os.path.isdir(ALLURE_RAW_DIR):
-        for filename in os.listdir(ALLURE_RAW_DIR):
-            if filename.endswith("-result.json"):
-                try:
-                    with open(os.path.join(ALLURE_RAW_DIR, filename), "r", encoding="utf-8") as f:
-                        status = json.load(f).get("status", "unknown")
-                    status_count[status] = status_count.get(status, 0) + 1
-                except Exception:
-                    pass
-    result["raw_status_count"] = status_count
     return _truncate(json.dumps(result, ensure_ascii=False, indent=2))
 
 
@@ -278,7 +267,7 @@ TOOLS = [
         "type": "function",
         "function": {
             "name": "get_allure_metrics",
-            "description": "读取 Allure 报告汇总数据（统计、耗时、环境信息）和原始用例状态分布，用于了解整体测试情况。",
+            "description": "读取 Allure 报告的套件/功能分组与环境信息，用于了解用例所属模块分布（统计数字以 JUnit 的 get_test_summary 为准）。",
             "parameters": {"type": "object", "properties": {}, "required": []},
         },
     },
