@@ -119,8 +119,10 @@ uv run python -m common.ai_agent
 
 ---
 
+## 💌 致谢
+
+本项目基于 [youngyangyang04/Test-Automation-Framework](https://github.com/youngyangyang04/Test-Automation-Framework) 二次开发，感谢原作者的开源分享 🙏
+
 ## 📄 License
 
 [GPL-3.0](LICENSE)
-
-基于 [youngyangyang04/Test-Automation-Framework](https://github.com/youngyangyang04/Test-Automation-Framework) 二次开发。
